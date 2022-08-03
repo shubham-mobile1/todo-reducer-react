@@ -1,24 +1,20 @@
-import React, { useReducer } from "react";
-import { Container } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-
-import { TodoContext } from "./context/TodoContext";
-import todoReducer from "./context/reducer";
-import TodoForm from "./components/TodoForm";
-import Todos from "./components/Todos";
-
+import React, {useReducer} from 'react';
+import { TodoContext } from './context/TodoContext';
+import todoReducer from './context/reducer';
+import './App.css';
+import TodoList from './components/TodoList';
+import AddTodo from './components/AddTodo';
 const App = () => {
   const [todos, dispatch] = useReducer(todoReducer, []);
   return (
-    <TodoContext.Provider value={{ todos, dispatch }}>
-      <Container fluid>
-        <h1>ToDo App with Context API</h1>
-        <Todos />
-        <TodoForm />
-      </Container>
+    <TodoContext.Provider value={{todos, dispatch}}>
+      <div className='body'>
+        <h1 className='heading'>TODO</h1>
+        <TodoList />
+        <AddTodo />
+      </div>
     </TodoContext.Provider>
   );
-};
+}
 
 export default App;
